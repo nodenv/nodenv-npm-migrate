@@ -61,9 +61,9 @@ trap migration_failed ERR
 
 NODENV_VERSION="${src}" \
 nodenv-exec npm ls --global --depth=0 |
-tail -n +2 |
-cut -d' ' -f2 |
-grep -v 'npm@' >> "${NPM_REQUIREMENTS}"
+  tail -n +2 |
+  cut -d' ' -f2 |
+  grep -v 'npm@' >> "${NPM_REQUIREMENTS}"
 
 NODENV_VERSION="${dst}" \
 xargs nodenv-exec npm install --global < "${NPM_REQUIREMENTS}"
