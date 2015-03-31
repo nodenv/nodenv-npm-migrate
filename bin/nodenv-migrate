@@ -1,0 +1,73 @@
+#!/usr/bin/env bash
+#
+# Summary: Migrate npm packages from a Node version to another
+#
+# Usage: nodenv migrate <from> <to>
+#
+
+set -e
+[ -n "$NODENV_DEBUG" ] && set -x
+
+# Provide nodenv completions
+if [ "$1" = "--complete" ]; then
+  exec nodenv-versions --bare
+fi
+
+if [ -z "$NODENV_ROOT" ]; then
+  NODENV_ROOT="${HOME}/.nodenv"
+fi
+
+usage() {
+  # We can remove the sed fallback once nodenv 0.2.0 is widely available.
+  nodenv-help migrate 2>/dev/null || sed -ne '/^#/!q;s/.//;s/.//;1,4d;p' < "$0"
+  [ -z "$1" ] || exit "$1"
+}
+
+migration_failed() {
+  { echo
+    echo "MIGRATION FAILED"
+    echo
+    echo "Inspect or clean up the package list at ${NPM_REQUIREMENTS}"
+  } 1>&2
+  exit 1
+}
+
+src="$1"
+dst="$2"
+[ -n "$src" ] || usage 1
+[ -n "$dst" ] || usage 1
+
+nodenv-prefix "$src" 1>/dev/null 2>&1 || {
+  echo "nodenv: not an installed version: $src" 1>&2
+  usage 1
+}
+
+nodenv-prefix "$dst" 1>/dev/null 2>&1 || {
+  echo "nodenv: not an installed version: $dst" 1>&2
+  usage 1
+}
+
+if [ -z "$TMPDIR" ]; then
+  TMP="/tmp"
+else
+  TMP="${TMPDIR%/}"
+fi
+
+SEED="$(date "+%Y%m%d%H%M%S").$$"
+LOG_PATH="${TMP}/node-build.${SEED}.log"
+NPM_REQUIREMENTS="${TMP}/requirements.${SEED}.txt"
+
+trap migration_failed ERR
+
+NODENV_VERSION="${src}" \
+nodenv-exec npm ls --global --depth=0 |
+tail -n +2 |
+cut -d' ' -f2 |
+grep -v 'npm@' >> "${NPM_REQUIREMENTS}"
+
+NODENV_VERSION="${dst}" \
+xargs nodenv-exec npm install --global < "${NPM_REQUIREMENTS}"
+nodenv-rehash
+
+rm -f "${NPM_REQUIREMENTS}"
+trap - ERR
