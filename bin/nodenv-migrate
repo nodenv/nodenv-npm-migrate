@@ -29,11 +29,12 @@ migration_failed() {
 
 src="$1"
 dst="$2"
-[ -n "$src" ] || nodenv-help --usage migrate | abort
-[ -n "$dst" ] || nodenv-help --usage migrate | abort
 
-nodenv-prefix "$src" 1>/dev/null || nodenv-help --usage migrate | abort
-nodenv-prefix "$dst" 1>/dev/null || nodenv-help --usage migrate | abort
+for v in "$src" "$dst"; do
+  if [ -z "$v" ] || ! nodenv-prefix "$v" 1>/dev/null; then
+    nodenv-help --usage migrate | abort
+  fi
+done
 
 if [ -z "$TMPDIR" ]; then
   TMP="/tmp"
