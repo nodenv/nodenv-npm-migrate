@@ -32,15 +32,8 @@ dst="$2"
 [ -n "$src" ] || nodenv-help --usage migrate | abort
 [ -n "$dst" ] || nodenv-help --usage migrate | abort
 
-nodenv-prefix "$src" 1>/dev/null 2>&1 || {
-  echo "nodenv: not an installed version: $src" 1>&2
-  nodenv-help --usage migrate | abort
-}
-
-nodenv-prefix "$dst" 1>/dev/null 2>&1 || {
-  echo "nodenv: not an installed version: $dst" 1>&2
-  nodenv-help --usage migrate | abort
-}
+nodenv-prefix "$src" 1>/dev/null || nodenv-help --usage migrate | abort
+nodenv-prefix "$dst" 1>/dev/null || nodenv-help --usage migrate | abort
 
 if [ -z "$TMPDIR" ]; then
   TMP="/tmp"
