@@ -13,10 +13,9 @@ if [ "$1" = "--complete" ]; then
   exec nodenv-versions --bare
 fi
 
-usage() {
-  # We can remove the sed fallback once nodenv 0.2.0 is widely available.
-  nodenv-help migrate 2>/dev/null || sed -ne '/^#/!q;s/.//;s/.//;1,4d;p' < "$0"
-  [ -z "$1" ] || exit "$1"
+abort() {
+  cat - >&2
+  exit 1
 }
 
 migration_failed() {
@@ -30,18 +29,12 @@ migration_failed() {
 
 src="$1"
 dst="$2"
-[ -n "$src" ] || usage 1
-[ -n "$dst" ] || usage 1
 
-nodenv-prefix "$src" 1>/dev/null 2>&1 || {
-  echo "nodenv: not an installed version: $src" 1>&2
-  usage 1
-}
-
-nodenv-prefix "$dst" 1>/dev/null 2>&1 || {
-  echo "nodenv: not an installed version: $dst" 1>&2
-  usage 1
-}
+for v in "$src" "$dst"; do
+  if [ -z "$v" ] || ! nodenv-prefix "$v" 1>/dev/null; then
+    nodenv-help --usage migrate | abort
+  fi
+done
 
 if [ -z "$TMPDIR" ]; then
   TMP="/tmp"
