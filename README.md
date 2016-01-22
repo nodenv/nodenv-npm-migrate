@@ -1,6 +1,6 @@
 # nodenv-npm-migrate
 
-nodenv-npm-migrate is a [nodenv](https://github.com/OiNutter/nodenv) plugin
+nodenv-npm-migrate is a [nodenv](https://github.com/nodenv/nodenv) plugin
 that provides a `nodenv migrate` command to migrate npm packages from one Node
 version to another.
 
@@ -14,7 +14,7 @@ This plugin was forked from
 Installing nodenv-npm-migrate as a nodenv plugin will give you access to the
 `nodenv migrate` command.
 
-    $ git clone git://github.com/jawshooah/nodenv-npm-migrate.git "$(nodenv root)/plugins/nodenv-npm-migrate"
+    $ git clone git://github.com/nodenv/nodenv-npm-migrate.git "$(nodenv root)/plugins/nodenv-npm-migrate"
 
 This will install the latest development version of nodenv-npm-migrate into
 the `$(nodenv root)/plugins/nodenv-npm-migrate` directory. From that directory, you
@@ -33,13 +33,13 @@ installed, you will also be able to use the `nodenv migrate` command.
  with Homebrew.*
 
 ```
-$ brew install jawshooah/nodenv/nodenv-npm-migrate
+$ brew install nodenv/nodenv/nodenv-npm-migrate
 ```
 
 Or, if you would like to install the latest development release:
 
 ```
-$ brew install --HEAD jawshooah/nodenv/nodenv-npm-migrate
+$ brew install --HEAD nodenv/nodenv/nodenv-npm-migrate
 ```
 
 ## Usage
