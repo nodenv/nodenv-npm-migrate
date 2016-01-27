@@ -77,3 +77,12 @@ migrate`.
     ├── grunt@0.4.5
     ├── grunt-cli@0.1.13
     └── npm@2.7.4
+
+## Credits
+
+Forked from [Yamashita, Yuu][yyuu]'s [pyenv-pip-migrate][] by [Josh Hagins][jawshooah] and modified for [nodenv][].
+
+[yyuu]: https://github.com/yyuu
+[pyenv-pip-migrate]: https://github.com/yyuu/pyenv-pip-migrate
+[jawshooah]: https://github.com/jawshooah
+[nodenv]: https://github.com/nodenv/nodenv
