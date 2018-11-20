@@ -1,7 +1,6 @@
 {
-  "name": "nodenv-npm-migrate",
+  "name": "@nodenv/nodenv-npm-migrate",
   "version": "0.1.0",
-  "private": true,
   "description": "Migrate npm packages from one Node version to another",
   "homepage": "https://github.com/nodenv/nodenv-npm-migrate#readme",
   "license": "MIT",
