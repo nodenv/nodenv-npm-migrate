@@ -43,7 +43,7 @@ else
 fi
 
 SEED="$(date "+%Y%m%d%H%M%S").$$"
-LOG_PATH="${TMP}/node-build.${SEED}.log"
+# LOG_PATH="${TMP}/node-build.${SEED}.log"
 NPM_REQUIREMENTS="${TMP}/requirements.${SEED}.txt"
 
 trap migration_failed ERR
