@@ -1,14 +1,13 @@
 {
-  "name": "nodenv-npm-migrate",
+  "name": "@nodenv/nodenv-npm-migrate",
   "version": "0.1.0",
-  "private": true,
   "description": "Migrate npm packages from one Node version to another",
   "homepage": "https://github.com/nodenv/nodenv-npm-migrate#readme",
   "license": "MIT",
-  "author": "Yuu Yamashita (https://bitbucket.org/yyuu)",
   "contributors": [
+    "Jason Karns <jason@karns.name> (http://jason.karns.name)",
     "Josh Hagins <hagins.josh@gmail.com>",
-    "Jason Karns <jason@karns.name> (http://jason.karns.name)"
+    "Yuu Yamashita (https://bitbucket.org/yyuu)"
   ],
   "repository": {
     "type": "git",
@@ -22,11 +21,19 @@
     "lib": "libexec",
     "test": "test"
   },
+  "files": [
+    "bin"
+  ],
   "scripts": {
-    "publish:brew": "brew-publish $npm_package_name v$npm_package_version",
-    "postversion": "git push --follow-tags && npm run publish:brew"
+    "start": "bin/nodenv-migrate",
+    "posttest": "npm run lint",
+    "lint": "git ls-files bin *.sh | xargs shellcheck",
+    "postversion": "npm publish",
+    "prepublishOnly": "npm run publish:github && npm run publish:brew",
+    "publish:brew": "brew-publish",
+    "publish:github": "git push --follow-tags"
   },
   "devDependencies": {
-    "brew-publish": "^2.0.0"
+    "brew-publish": "^2.3.1"
   }
 }
