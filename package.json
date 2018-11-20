@@ -21,6 +21,9 @@
     "lib": "libexec",
     "test": "test"
   },
+  "files": [
+    "bin"
+  ],
   "scripts": {
     "start": "bin/nodenv-migrate",
     "posttest": "npm run lint",
