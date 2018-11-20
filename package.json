@@ -4,10 +4,10 @@
   "description": "Migrate npm packages from one Node version to another",
   "homepage": "https://github.com/nodenv/nodenv-npm-migrate#readme",
   "license": "MIT",
-  "author": "Yuu Yamashita (https://bitbucket.org/yyuu)",
   "contributors": [
+    "Jason Karns <jason@karns.name> (http://jason.karns.name)",
     "Josh Hagins <hagins.josh@gmail.com>",
-    "Jason Karns <jason@karns.name> (http://jason.karns.name)"
+    "Yuu Yamashita (https://bitbucket.org/yyuu)"
   ],
   "repository": {
     "type": "git",
