@@ -7,6 +7,17 @@ version to another.
 This plugin was forked from
 [pyenv-pip-migrate](https://github.com/yyuu/pyenv-pip-migrate).
 
+<!-- toc -->
+
+- [Installation](#installation)
+  * [Installing as a nodenv plugin](#installing-as-a-nodenv-plugin)
+  * [Installing with Homebrew (for OS X users)](#installing-with-homebrew-for-os-x-users)
+- [Usage](#usage)
+  * [Using `nodenv migrate` with nodenv](#using-nodenv-migrate-with-nodenv)
+- [Credits](#credits)
+
+<!-- tocstop -->
+
 ## Installation
 
 ### Installing as a nodenv plugin
