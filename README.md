@@ -7,6 +7,8 @@ version to another.
 This plugin was forked from
 [pyenv-pip-migrate](https://github.com/yyuu/pyenv-pip-migrate).
 
+<!-- toc -->
+
 ## Installation
 
 ### Installing as a nodenv plugin
