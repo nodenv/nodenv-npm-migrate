@@ -25,7 +25,7 @@ This plugin was forked from
 Installing nodenv-npm-migrate as a nodenv plugin will give you access to the
 `nodenv migrate` command.
 
-    $ git clone git://github.com/nodenv/nodenv-npm-migrate.git "$(nodenv root)/plugins/nodenv-npm-migrate"
+    $ git clone git@github.com:nodenv/nodenv-npm-migrate.git "$(nodenv root)/plugins/nodenv-npm-migrate"
 
 This will install the latest development version of nodenv-npm-migrate into
 the `$(nodenv root)/plugins/nodenv-npm-migrate` directory. From that directory, you
