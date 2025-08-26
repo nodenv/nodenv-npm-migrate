@@ -32,7 +32,6 @@
     "postversion": "git push --follow-tags"
   },
   "devDependencies": {
-    "brew-publish": "^2.3.1",
     "shellcheck": "^4.1.0"
   }
 }
