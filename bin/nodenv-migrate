@@ -19,7 +19,8 @@ abort() {
 }
 
 migration_failed() {
-  { echo
+  {
+    echo
     echo "MIGRATION FAILED"
     echo
     echo "Inspect or clean up the package list at ${NPM_REQUIREMENTS}"
@@ -49,13 +50,13 @@ NPM_REQUIREMENTS="${TMP}/requirements.${SEED}.txt"
 trap migration_failed ERR
 
 NODENV_VERSION="${src}" \
-nodenv-exec npm ls --global --depth=0 |
+  nodenv-exec npm ls --global --depth=0 |
   tail -n +2 |
   cut -d' ' -f2 |
-  grep -v 'npm@' >> "${NPM_REQUIREMENTS}"
+  grep -v 'npm@' >>"${NPM_REQUIREMENTS}"
 
 NODENV_VERSION="${dst}" \
-xargs nodenv-exec npm install --global < "${NPM_REQUIREMENTS}"
+  xargs nodenv-exec npm install --global <"${NPM_REQUIREMENTS}"
 nodenv-rehash
 
 rm -f "${NPM_REQUIREMENTS}"
