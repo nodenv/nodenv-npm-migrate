@@ -26,14 +26,16 @@
   ],
   "scripts": {
     "start": "bin/nodenv-migrate",
+    "test": "bats ${CI:+--tap} test",
     "posttest": "npm run lint",
-    "lint": "git ls-files bin *.sh | xargs shellcheck",
+    "lint": "git ls-files bin etc script */*.*sh | xargs shellcheck",
     "postversion": "npm publish",
     "prepublishOnly": "npm run publish:github && npm run publish:brew",
     "publish:brew": "brew-publish",
     "publish:github": "git push --follow-tags"
   },
   "devDependencies": {
-    "brew-publish": "^2.3.1"
+    "brew-publish": "^2.3.1",
+    "shellcheck": "^4.1.0"
   }
 }
