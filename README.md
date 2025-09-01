@@ -1,6 +1,6 @@
 # nodenv-npm-migrate
 
-[nodenv][] plugin to migrate npm packages from one Node version to another
+A [nodenv][] plugin to migrate npm packages from one Node version to another.
 
 [![Tests](https://img.shields.io/github/actions/workflow/status/nodenv/nodenv-npm-migrate/test.yml?label=tests&logo=github)](https://github.com/nodenv/nodenv-npm-migrate/actions/workflows/test.yml)
 [![Latest GitHub Release](https://img.shields.io/github/v/release/nodenv/nodenv-npm-migrate?label=github&logo=github&sort=semver)](https://github.com/nodenv/nodenv-npm-migrate/releases/latest)
